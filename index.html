@@ -23,6 +23,8 @@ var APP = 'https://script.google.com/macros/s/AKfycbw_WVW4dlJIg0Qp2UMr9WfMQZ7yAt
 var k = new URLSearchParams(location.search).get('k');
 try { if (k) localStorage.setItem('hq_k', k); else k = localStorage.getItem('hq_k'); } catch(e) {}
 var f = document.createElement('iframe');
+// Open the app WITHOUT the visitor's Google login, so phones signed into several Google accounts don't get 'unable to open the file'.
+f.setAttribute('credentialless', '');
 f.src = APP + (k ? '?k=' + encodeURIComponent(k) : '');
 f.title = 'Chapter HQ';
 f.allow = 'clipboard-write; camera';
