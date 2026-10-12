@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2265">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Chapter HQ">
+<title>Chapter HQ · Club America Atlantic</title>
+<link rel="icon" href="https://www.clubamerica.com/images/home/star.svg">
+<link rel="apple-touch-icon" href="https://www.clubamerica.com/_next/image?url=%2Fimages%2Fclub-america-logo.png&w=384&q=75">
+<style>
+html,body{margin:0;height:100%;background:#0B2265}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+.load{position:fixed;inset:0;display:grid;place-items:center;color:#fff;font:600 18px/1.3 system-ui,sans-serif;text-align:center;padding:24px}
+</style>
+</head>
+<body>
+<div class="load" id="load">Loading Chapter HQ…</div>
+<script>
+// The app lives in Google Apps Script (data in Jewel's Google Sheet). This page just opens it.
+var APP = 'https://script.google.com/macros/s/AKfycbw_WVW4dlJIg0Qp2UMr9WfMQZ7yAt9tJSQ8HQTVENJpthbnZFHRiqCE6Z2rSya0MI_l/exec';
+var k = new URLSearchParams(location.search).get('k');
+try { if (k) localStorage.setItem('hq_k', k); else k = localStorage.getItem('hq_k'); } catch(e) {}
+var f = document.createElement('iframe');
+f.src = APP + (k ? '?k=' + encodeURIComponent(k) : '');
+f.title = 'Chapter HQ';
+f.allow = 'clipboard-write; camera';
+f.onload = function(){ var l = document.getElementById('load'); if (l) l.remove(); };
+document.body.appendChild(f);
+</script>
+</body>
+</html>
